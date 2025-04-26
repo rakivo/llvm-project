@@ -10971,7 +10971,7 @@ public:
   StmtResult ActOnForStmt(SourceLocation ForLoc, SourceLocation LParenLoc,
                           Stmt *First, ConditionResult Second,
                           FullExprArg Third, SourceLocation RParenLoc,
-                          Stmt *Body);
+                          Stmt *Body, bool is_fore_stmt);
 
   /// In an Objective C collection iteration statement:
   ///   for (x in y)

@@ -1463,9 +1463,9 @@ public:
   StmtResult RebuildForStmt(SourceLocation ForLoc, SourceLocation LParenLoc,
                             Stmt *Init, Sema::ConditionResult Cond,
                             Sema::FullExprArg Inc, SourceLocation RParenLoc,
-                            Stmt *Body) {
+                            Stmt *Body, bool is_fore_stmt) {
     return getSema().ActOnForStmt(ForLoc, LParenLoc, Init, Cond,
-                                  Inc, RParenLoc, Body);
+                                  Inc, RParenLoc, Body, is_fore_stmt);
   }
 
   /// Build a new goto statement.
@@ -8479,7 +8479,7 @@ TreeTransform<Derived>::TransformForStmt(ForStmt *S) {
 
   return getDerived().RebuildForStmt(S->getForLoc(), S->getLParenLoc(),
                                      Init.get(), Cond, FullInc,
-                                     S->getRParenLoc(), Body.get());
+                                     S->getRParenLoc(), Body.get(), S->is_fore_stmt);
 }
 
 template<typename Derived>

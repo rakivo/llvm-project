@@ -2210,7 +2210,7 @@ private:
   StmtResult ParseSwitchStatement(SourceLocation *TrailingElseLoc);
   StmtResult ParseWhileStatement(SourceLocation *TrailingElseLoc);
   StmtResult ParseDoStatement();
-  StmtResult ParseForStatement(SourceLocation *TrailingElseLoc);
+  StmtResult ParseForStatement(SourceLocation *TrailingElseLoc, bool is_fore_stmt);
   StmtResult ParseGotoStatement();
   StmtResult ParseContinueStatement();
   StmtResult ParseBreakStatement();

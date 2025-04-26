@@ -1375,7 +1375,10 @@ void CodeGenFunction::EmitForStmt(const ForStmt &S,
   // If there is an increment, emit it next.
   if (S.getInc()) {
     EmitBlock(Continue.getBlock());
-    EmitStmt(S.getInc());
+    size_t n = S.is_fore_stmt ? 4 : 1;
+    for (size_t i = 0; i < n; ++i) {
+      EmitStmt(S.getInc());
+    }
     if (llvm::EnableSingleByteCoverage)
       incrementProfileCounter(S.getInc());
   }

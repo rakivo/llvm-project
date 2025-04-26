@@ -470,9 +470,14 @@ mlir::LogicalResult CIRGenFunction::emitForStmt(const ForStmt &s) {
         },
         /*stepBuilder=*/
         [&](mlir::OpBuilder &b, mlir::Location loc) {
-          if (s.getInc())
-            if (emitStmt(s.getInc(), /*useCurrentScope=*/true).failed())
-              loopRes = mlir::failure();
+          if (s.getInc()) {
+            size_t n = S.is_fore_stmt ? 4 : 1;
+            for (size_t i = 0; i < n; ++i) {
+              if (emitStmt(s.getInc(), /*useCurrentScope=*/true).failed())
+                loopRes = mlir::failure();
+              EmitStmt(S.getInc());
+            }
+          }
           builder.createYield(loc);
         });
     return loopRes;

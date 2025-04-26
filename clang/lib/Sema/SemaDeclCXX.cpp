@@ -8749,7 +8749,7 @@ private:
                           S.ActOnCondition(nullptr, Loc, Cond.get(),
                                            Sema::ConditionKind::Boolean),
                           S.MakeFullDiscardedValueExpr(Inc.get()), Loc,
-                          Substmt.get());
+                          Substmt.get(), false);
   }
 
   StmtResult visitExpandedSubobject(QualType Type, ExprPair Obj) {
@@ -15059,7 +15059,7 @@ buildSingleCopyAssignRecursively(Sema &S, SourceLocation Loc, QualType T,
   return S.ActOnForStmt(
       Loc, Loc, InitStmt,
       S.ActOnCondition(nullptr, Loc, Comparison, Sema::ConditionKind::Boolean),
-      S.MakeFullDiscardedValueExpr(Increment), Loc, Copy.get());
+      S.MakeFullDiscardedValueExpr(Increment), Loc, Copy.get(), false);
 }
 
 static StmtResult

@@ -2834,9 +2834,15 @@ class ForStmt : public Stmt {
   SourceLocation LParenLoc, RParenLoc;
 
 public:
+	bool is_fore_stmt = false;
+
   ForStmt(const ASTContext &C, Stmt *Init, Expr *Cond, VarDecl *condVar,
           Expr *Inc, Stmt *Body, SourceLocation FL, SourceLocation LP,
           SourceLocation RP);
+
+  ForStmt(const ASTContext &C, Stmt *Init, Expr *Cond, VarDecl *condVar,
+          Expr *Inc, Stmt *Body, SourceLocation FL, SourceLocation LP,
+          SourceLocation RP, bool is_fore_stmt);
 
   /// Build an empty for statement.
   explicit ForStmt(EmptyShell Empty) : Stmt(ForStmtClass, Empty) {}

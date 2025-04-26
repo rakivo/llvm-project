@@ -1076,6 +1076,19 @@ ForStmt::ForStmt(const ASTContext &C, Stmt *Init, Expr *Cond, VarDecl *condVar,
   ForStmtBits.ForLoc = FL;
 }
 
+ForStmt::ForStmt(const ASTContext &C, Stmt *Init, Expr *Cond, VarDecl *condVar,
+                 Expr *Inc, Stmt *Body, SourceLocation FL, SourceLocation LP,
+                 SourceLocation RP, bool is_fore_stmt)
+  : Stmt(ForStmtClass), LParenLoc(LP), RParenLoc(RP), is_fore_stmt(is_fore_stmt)
+{
+  SubExprs[INIT] = Init;
+  setConditionVariable(C, condVar);
+  SubExprs[COND] = Cond;
+  SubExprs[INC] = Inc;
+  SubExprs[BODY] = Body;
+  ForStmtBits.ForLoc = FL;
+}
+
 VarDecl *ForStmt::getConditionVariable() const {
   if (!SubExprs[CONDVAR])
     return nullptr;
