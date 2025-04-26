@@ -1,3 +1,8 @@
+# The "fore" loop
+The greatest of all: "fore" loop, the loop that runs `inc` part of the "for" loop 4 times.
+
+The whole implementation of the "fore" loop took me like 15 minutes including all the time I was looking for some definitions and what not, the rest of the time I was recompiling LLVM (took another like 40 mins)
+
 # The LLVM Compiler Infrastructure
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/llvm/llvm-project/badge)](https://securityscorecards.dev/viewer/?uri=github.com/llvm/llvm-project)
